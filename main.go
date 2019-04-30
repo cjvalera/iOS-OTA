@@ -94,15 +94,17 @@ func newRouter() *mux.Router {
 }
 
 func getPort() string {
-	p := os.Getenv("PORT")
-	if p != "" {
-		return ":" + p
+	port := os.Getenv("PORT")
+	if port != "" {
+		return ":" + port
 	}
-	return ":8080"
+	fmt.Println("INFO: No PORT environment variable detected, defaulting to " + port)
+	return ":4747"
 }
 
 func main() {
 	r := newRouter()
+	fmt.Println("listening...")
 	http.ListenAndServe(getPort(), r)
 }
 
