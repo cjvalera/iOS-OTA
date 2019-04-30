@@ -1,0 +1,24 @@
+{
+	"ImportPath": "github.com/cjvalera/ios_ota",
+	"GoVersion": "go1.12",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.7.1",
+			"Rev": "c5c6c98bc25355028a63748a498942a6398ccd22"
+		},
+		{
+			"ImportPath": "github.com/skip2/go-qrcode",
+			"Rev": "dc11ecdae0a9889dc81a343585516404e8dc6ead"
+		},
+		{
+			"ImportPath": "github.com/skip2/go-qrcode/bitset",
+			"Rev": "dc11ecdae0a9889dc81a343585516404e8dc6ead"
+		},
+		{
+			"ImportPath": "github.com/skip2/go-qrcode/reedsolomon",
+			"Rev": "dc11ecdae0a9889dc81a343585516404e8dc6ead"
+		}
+	]
+}
