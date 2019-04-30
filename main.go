@@ -59,18 +59,26 @@ func createQRCode(w http.ResponseWriter, r *http.Request) {
 		showInternalError(errQRCode, w)
 		return
 	}
-
 	imgBase64Str := base64.StdEncoding.EncodeToString(png)
+	imgSrc := fmt.Sprintf("data:image/png;base64,%s", imgBase64Str)
 
-	img2html := "<html><body><img src=\"data:image/png;base64," + imgBase64Str + "\" /></body></html>"
+	data := map[string]interface{}{"QRCode": template.URL(imgSrc)}
 
-	w.Write([]byte(fmt.Sprintf(img2html)))
+	t, err := template.ParseFiles("./assets/index.html")
+	if err != nil {
+		log.Print("template parsing error: ", err)
+	}
+	err = t.Execute(w, data)
+	if err != nil {
+		log.Print("template executing error: ", err)
+	}
+
 }
 
 func newRouter() *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/generate", generateManifest).Methods("POST")
-	r.HandleFunc("/qrcode", createQRCode).Methods("POST")
+	r.HandleFunc("/", createQRCode).Methods("POST")
 	r.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		t, err := template.ParseFiles("./assets/index.html")
 		if err != nil {

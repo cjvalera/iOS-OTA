@@ -36,7 +36,9 @@
                   placeholder="https://dl.dropboxusercontent.com/s/my-app"
                   required
                 />
-                <small id="linkHelp" class="text-warning form-text">Link has to be HTTPS</small>
+                <small id="linkHelp" class="text-warning form-text"
+                  >Link has to be HTTPS</small
+                >
               </div>
             </div>
 
@@ -80,30 +82,37 @@
           </form>
         </div>
       </div>
-
-      <div class="mt-5"></div>
-      <h2>Create QR Code</h2>
-      <p>Enter the public/shared link of the manifest file.</p>
-      <div class="row">
-        <div class="col">
-          <form action="/qrcode" autocomplete="off" method="POST" target="_blank">
-            <div class="form-group">
-              <label>Manifest Public Link</label>
-              <div>
-                <input
-                  class="col"
-                  name="manifest"
-                  type="text"
-                  placeholder="https://dl.dropboxusercontent.com/s/manifest.plist"
-                  required
-                />
-                <small id="linkHelp" class="text-warning form-text ">Link has to be HTTPS</small>
+      <div class="mt-5">
+        <div class="row">
+          <div class="col">
+            <h2>Create QR Code</h2>
+            <p>Enter the public/shared link of the manifest file.</p>
+            <form action="/" autocomplete="off" method="POST">
+              <div class="form-group">
+                <label>Manifest Public Link</label>
+                <div>
+                  <input
+                    class="col"
+                    name="manifest"
+                    type="text"
+                    placeholder="https://dl.dropboxusercontent.com/s/manifest.plist"
+                    required
+                  />
+                  <small id="linkHelp" class="text-warning form-text "
+                    >Link has to be HTTPS</small
+                  >
+                </div>
               </div>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              Create QR Code
-            </button>
-          </form>
+              <button type="submit" class="btn btn-primary">
+                Create QR Code
+              </button>
+            </form>
+          </div>
+          <div class="col">
+            {{if .QRCode}}
+            <img src="{{.QRCode}}" alt="" />
+            {{ end }}
+          </div>
         </div>
       </div>
     </div>
