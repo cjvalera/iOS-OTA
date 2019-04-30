@@ -1,1 +1,1 @@
-web: main
+web: ios_ota
